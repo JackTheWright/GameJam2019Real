@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRespawn : MonoBehaviour
+public class EnemyRespawnWall : MonoBehaviour
 {
     public bool Despawn;
     public float Timer;
@@ -10,12 +10,12 @@ public class EnemyRespawn : MonoBehaviour
     public GameObject Enemy;
     public string EnemyName;
     GameObject LastEnemy;
-    Enemy enemy;
+    WallEnemy wallenemy;
 
     void Start()
     {
-        
-        this.gameObject.name = EnemyName + "spawn point";
+
+        this.gameObject.name = EnemyName + "wall spawn point";
         Despawn = false;
     }
 

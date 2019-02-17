@@ -61,7 +61,9 @@ public class PlayerController : MonoBehaviour {
         myanimator = GetComponent<Animator>();
         exitTrigger = GameObject.Find("ExitTrigger");
         bc2d = exitTrigger.GetComponent<BoxCollider2D>();
-
+        
+        hasKey = false;
+        minEnergy = false;
         SetEnergy(0);
     }
 
@@ -282,6 +284,14 @@ public class PlayerController : MonoBehaviour {
         if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("ExitTrigger"))) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+    }
+    
+    public bool checkKey() {
+        return hasKey;
+    }
+    
+    public bool checkMinEnergy() {
+        return minEnergy;
     }
 
     public void SetEnergy(float e) {

@@ -8,6 +8,7 @@ TagManager:
   - EnemyWall
   - player
   - interactUI
+  - needtoUnlock
   layers:
   - Default
   - TransparentFX

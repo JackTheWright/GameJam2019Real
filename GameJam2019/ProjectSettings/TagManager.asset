@@ -23,7 +23,7 @@ TagManager:
   - MidgroundFront
   - Player
   - Enemy
-  - 
+  - Crystal
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 1273350391
+    locked: 0
+  - name: Crystal
+    uniqueID: 1841309695
     locked: 0
   - name: MidgroundFront
     uniqueID: 288384071

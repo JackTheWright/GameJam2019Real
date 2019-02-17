@@ -9,6 +9,7 @@ public class Crystal1 : MonoBehaviour
     void Start()
     {
         print("starttest");
+        crystalcount = 0;
     }
 
     void OnTriggerEnter2D(Collider2D playerCollider)

@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class Crystal1 : MonoBehaviour
 {
-    public int crystalcount = 0;
+    GameObject player;
+    PlayerController PC;
     // Start is called before the first frame update
     void Start()
     {
+        
+        player = GameObject.Find("player");
+        PC = player.GetComponent<PlayerController>();
         print("starttest");
-        crystalcount = 0;
     }
 
     void OnTriggerEnter2D(Collider2D playerCollider)
     {
         print("player entered collider");
-
+        //if (playerCollider.tag == "Gem")
+        //{
         // destroys crystal
-        Destroy(gameObject);
+        
         // increments count for number of crystals consumes 
-        crystalcount = crystalcount+1;
+        PC.crystalCount += 1;
         // retuns2
-        print("Crystal Count =" + crystalcount);
+        print("Crystal Count =" + PC.crystalCount);
 
         //}
         //else
@@ -29,10 +33,15 @@ public class Crystal1 : MonoBehaviour
         //    print("object wasnt destroyed");
         //}
 
-        if (playerCollider.gameObject.layer == 10) { // Collided with playte
+        if (playerCollider.gameObject.layer == 12) { // Collided with playte
             PlayerController PC = playerCollider.gameObject.GetComponent<PlayerController>();
             PC.SetEnergy(PC.energy + PlayerController.crystalEnergyBoost);
+            if (PC.crystalCount >= 8) {
+                PC.trueMinEnergy();
+            }
+            
         }
+        Destroy(gameObject);
     }
 
     // Update is called once per frame

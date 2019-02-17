@@ -282,6 +282,9 @@ public class PlayerController : MonoBehaviour {
             mybodycollider.IsTouchingLayers(LayerMask.GetMask("Crystal"))) {
             Debug.Log("Touched gem");
             SetEnergy(energy + crystalEnergyBoost);
+            if (energy >= 80) {
+                minEnergy = true;
+            }
         }
     }
 
@@ -342,5 +345,9 @@ public class PlayerController : MonoBehaviour {
     public UpgradeState chooseGrapplingHook() {
         currentUpgradeState = UpgradeState.GrapplingHook;
         return currentUpgradeState;
+    }
+    
+    public void trueMinEnergy() {
+        minEnergy = true;
     }
 }

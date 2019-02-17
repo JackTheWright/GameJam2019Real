@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     Animator myanimator;
     public bool hasKey;
     public int crystalCount;
-    public int minEnergy;
+    public bool minEnergy;
 
     //Death Vars
     public bool hitdead = false;
@@ -29,15 +29,15 @@ public class PlayerController : MonoBehaviour {
     private const float maxEnergy = 100;
     private const float movementEnergyFactor = 8;
     private const float jumpEnergyFactor = 10;
-    public const float crystalEnergyBoost = 25;
+    public const float crystalEnergyBoost = 10;
 
 
     // Jetpack Variables
     public Slider fuelSlider;
 
-    private const float jetPackVelocity = 1.5f;
-    private const float maxUpwardsVelocity = 20f;
-    private const float maxJetpackTime = 2.0f;
+    private const float jetPackVelocity = 2f;
+    private const float maxUpwardsVelocity = 17.5f;
+    private const float maxJetpackTime = 1.0f;
     private float remainingJetpackTime = maxJetpackTime;
 
     // Grappling Hook Variables
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
         hitdead = false;
         myanimator = GetComponent<Animator>();
 
-        SetEnergy(maxEnergy);
+        SetEnergy(0);
     }
 
     void Update() {
@@ -97,19 +97,21 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Run() {
+
         if (!isGrappling) {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
             if (Input.GetKey("a")) {
                 rb2d.velocity += new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-1, transform.localScale.y);
-                SetEnergy(energy - movementEnergyFactor*Time.deltaTime);
+                //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
             }
             if (Input.GetKey("d")) {
                 rb2d.velocity += new Vector2(speed, 0);
                 transform.localScale = new Vector2(1, transform.localScale.y);
-                SetEnergy(energy - movementEnergyFactor*Time.deltaTime);
+                //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
             }
         }
+        
     }
 
     private void FlipSprite() {
@@ -129,9 +131,10 @@ public class PlayerController : MonoBehaviour {
                 //myanimator.SetBool("jump", true);
                 Vector2 jumpUp = new Vector2(0f, jumpSpeed);
                 rb2d.velocity += jumpUp * Mathf.Sign(rb2d.gravityScale);
-                SetEnergy(energy - jumpEnergyFactor);
+                //SetEnergy(energy - jumpEnergyFactor);
             }
         }
+        
     }
 
     // Use the current upgrade selected, based on currentUpgradeState
@@ -260,5 +263,8 @@ public class PlayerController : MonoBehaviour {
         energy = e;
         energy = Mathf.Clamp(energy, 0, maxEnergy);
         energySlider.value = energy;
+        if (energy >= 80) {
+            minEnergy = true;
+        }
     }
 }

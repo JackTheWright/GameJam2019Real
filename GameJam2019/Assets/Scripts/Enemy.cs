@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 1f;
+    public float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
     public int hp = 1;
     public int dmg = 1;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countToDespawn >= 3)
+        if (countToDespawn >= 6)
         {
             GameObject.Find(gameObject.name + ("spawn point")).GetComponent<EnemyRespawn>().Despawn = true;
             Destroy(gameObject);

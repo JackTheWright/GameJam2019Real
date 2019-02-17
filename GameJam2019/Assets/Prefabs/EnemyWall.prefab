@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3227870432725661005}
   - component: {fileID: 3227870432725661004}
   - component: {fileID: 3227870432725661007}
+  - component: {fileID: 1565532670573732181}
   m_Layer: 13
   m_Name: EnemyWall
   m_TagString: EnemyWall
@@ -163,3 +164,22 @@ MonoBehaviour:
   dmg: 1
   countToDespawn: 0
   position: {x: 0, y: 0, z: 0}
+--- !u!95 &1565532670573732181
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227870432725661006}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24a89e05d5dea431f89828f271ee7533, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

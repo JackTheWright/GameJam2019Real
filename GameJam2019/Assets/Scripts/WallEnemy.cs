@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float moveSpeed = 1f;
+    public float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
     public int hp = 1;
     public int dmg = 1;
@@ -21,7 +21,7 @@ public class WallEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countToDespawn >= 3)
+        if (countToDespawn >= 6)
         {
             GameObject.Find(gameObject.name + ("wall spawn point")).GetComponent<EnemyRespawnWall>().Despawn = true;
             Destroy(gameObject);

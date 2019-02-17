@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour {
     BoxCollider2D myfeetcollider;
     private Rigidbody2D rb2d;
     Animator myanimator;
+    public bool hasKey;
+    public int crystalCount;
+    public int minEnergy;
 
     //Death Vars
     public bool hitdead = false;
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour {
     private void Jump() {
         if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump")) {
+        if (CrossPlatformInputManager.GetButtonDown("w")) {
             //attackflag = 0;
             //myanimator.SetBool("jump", true);
             Vector2 jumpUp = new Vector2(0f, jumpSpeed);

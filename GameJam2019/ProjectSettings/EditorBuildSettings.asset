@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: 08bba8a6b64fc49c49202683d4199888
   - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: fc08c82e63f99497c8b2cc295e4ac612
@@ -20,4 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/A1L2.unity
     guid: 2ac6b2660d9e74597ae70738c675e0f9
+  - enabled: 1
+    path: Assets/Scenes/A1L3.unity
+    guid: 55eeed279e3f44493a2f92664694de11
+  - enabled: 1
+    path: Assets/Scenes/A2L1.unity
+    guid: 3f75694781614467281f4128b1dadf34
+  - enabled: 1
+    path: Assets/Scenes/A2L2.unity
+    guid: 77cebad0891ac4ebe817193fb549a72a
+  - enabled: 1
+    path: Assets/Scenes/A2L3.unity
+    guid: d0387ee8bdfde41439c2954ab180ad02
   m_configObjects: {}

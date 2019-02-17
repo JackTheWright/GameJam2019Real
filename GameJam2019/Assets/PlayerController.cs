@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
 
     enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    UpgradeState currentUpgradeState = UpgradeState.GrapplingHook;
+    UpgradeState currentUpgradeState = UpgradeState.GravityBoots;
     [SerializeField] float jumpSpeed = 12f;
 
 
@@ -71,12 +71,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey("a"))
             {
                 rb2d.velocity += new Vector2(-speed, 0);
-                transform.localScale = new Vector2(-1, 1);
+                transform.localScale = new Vector2(-1, transform.localScale.y);
             }
             if (Input.GetKey("d"))
             {
                 rb2d.velocity += new Vector2(speed, 0);
-                transform.localScale = new Vector2(1, 1);
+                transform.localScale = new Vector2(1, transform.localScale.y);
             }
         }
     }
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             //attackflag = 0;
             //myanimator.SetBool("jump", true);
             Vector2 jumpUp = new Vector2(0f, jumpSpeed);
-            rb2d.velocity += jumpUp;
+            rb2d.velocity += jumpUp * Mathf.Sign(rb2d.gravityScale);
         }
     }
 
@@ -208,9 +208,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void UseGravityBoots()
-    {
-
+    private void UseGravityBoots() {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && IsGrounded()) {
+            rb2d.gravityScale *= -1;
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y * -1);
+        }
     }
 
     bool IsGrounded()

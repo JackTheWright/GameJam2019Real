@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     public enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    public UpgradeState currentUpgradeState = UpgradeState.None;
+    public UpgradeState currentUpgradeState;
     [SerializeField] float jumpSpeed = 12f;
 
     // Energy consomption variables
@@ -78,9 +78,12 @@ public class PlayerController : MonoBehaviour {
         else if (scenecurr.name == "A2L1" || scenecurr.name == "A2L2" || scenecurr.name == "A2L3"){
             chooseGravityBoots();
         }
-        /*else if (scenecurr.name == "A3L1" || scenecurr.name == "A3L2" || scenecurr.name == "A3L3"){
+        else if (scenecurr.name == "A3L1" || scenecurr.name == "A3L2" || scenecurr.name == "A3L3"){
             chooseGrapplingHook();
-        }*/
+        }
+        else {
+            chooseNothing();
+        }
         
     }
 
@@ -344,6 +347,10 @@ public class PlayerController : MonoBehaviour {
     
     public UpgradeState chooseGrapplingHook() {
         currentUpgradeState = UpgradeState.GrapplingHook;
+        return currentUpgradeState;
+    }
+    public UpgradeState chooseNothing() {
+        currentUpgradeState = UpgradeState.None;
         return currentUpgradeState;
     }
     

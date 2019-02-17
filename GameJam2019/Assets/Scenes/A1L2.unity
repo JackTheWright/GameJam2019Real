@@ -61999,6 +61999,7 @@ MonoBehaviour:
   minEnergy: 0
   hitdead: 0
   deathKick: {x: 25, y: 25}
+  currentUpgradeState: 1
   jumpSpeed: 18
   energySlider: {fileID: 0}
   energy: 0
@@ -62069,7 +62070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!212 &8214097296316684684
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -62248,7 +62248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &8214097296411980277
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -62313,7 +62312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!1 &8214097296570188018
 GameObject:
   m_ObjectHideFlags: 0
@@ -62512,7 +62510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &8214097296850087005
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -62660,7 +62657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!1 &8214097297377280862
 GameObject:
   m_ObjectHideFlags: 0
@@ -62709,7 +62705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!1 &8214097297562630330
 GameObject:
   m_ObjectHideFlags: 0
@@ -62841,7 +62836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!1 &8214097297598760626
 GameObject:
   m_ObjectHideFlags: 0
@@ -62957,7 +62951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &8214097297673640881
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -63109,7 +63102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &8214097298260449667
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -63304,7 +63296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &8214097298295036477
 CircleCollider2D:
   m_ObjectHideFlags: 0

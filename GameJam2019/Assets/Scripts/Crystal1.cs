@@ -12,7 +12,6 @@ public class Crystal1 : MonoBehaviour
         
         player = GameObject.Find("player");
         PC = player.GetComponent<PlayerController>();
-        print("starttest");
     }
 
     void OnTriggerEnter2D(Collider2D playerCollider)
@@ -26,6 +25,8 @@ public class Crystal1 : MonoBehaviour
         PC.crystalCount += 1;
         // retuns2
         print("Crystal Count =" + PC.crystalCount);
+        print("Yeet");
+        Destroy(gameObject);
 
         //}
         //else
@@ -33,15 +34,13 @@ public class Crystal1 : MonoBehaviour
         //    print("object wasnt destroyed");
         //}
 
-        if (playerCollider.gameObject.layer == 12) { // Collided with playte
-            PlayerController PC = playerCollider.gameObject.GetComponent<PlayerController>();
-            PC.SetEnergy(PC.energy + PlayerController.crystalEnergyBoost);
-            if (PC.crystalCount >= 8) {
-                PC.trueMinEnergy();
-            }
+        PC.SetEnergy(PC.energy + PlayerController.crystalEnergyBoost);
             
+        if (PC.crystalCount >= 8) {
+            PC.trueMinEnergy();
         }
-        Destroy(gameObject);
+            
+        
     }
 
     // Update is called once per frame

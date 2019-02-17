@@ -144,7 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &793688
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -828,7 +827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &278124967
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1144,7 +1142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &365458864
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2191,7 +2188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &557628783
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3648,7 +3644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &1074807861
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3828,7 +3823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &1295086662
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -125767,7 +125761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!58 &1549792251
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126124,6 +126117,7 @@ MonoBehaviour:
   minEnergy: 0
   hitdead: 0
   deathKick: {x: 25, y: 25}
+  currentUpgradeState: 3
   jumpSpeed: 18
   energySlider: {fileID: 0}
   energy: 0
@@ -126942,7 +126936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95496b1ab6a54e18ae0d5f6f5fb13e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalcount: 0
 --- !u!212 &5416104632944089348
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127168,7 +127161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5774734394337253243}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.95, y: 3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8635228094900806324}

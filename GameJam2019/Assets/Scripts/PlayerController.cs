@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour {
     public bool hitdead = false;
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
-    enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    UpgradeState currentUpgradeState = UpgradeState.None;
+    public enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
+    public UpgradeState currentUpgradeState = UpgradeState.None;
     [SerializeField] float jumpSpeed = 12f;
 
     // Energy consomption variables
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour {
     private bool isGrappling;
 
     public float speed = 7f;
+    
+    Scene scenecurr;
 
     void Start() {
         rb2d = GetComponent<Rigidbody2D>();
@@ -68,18 +70,32 @@ public class PlayerController : MonoBehaviour {
         hasKey = false;
         minEnergy = false;
         SetEnergy(0);
+        
+        scenecurr = SceneManager.GetActiveScene();
+        if (scenecurr.name == "A1L1" || scenecurr.name == "A1L2" || scenecurr.name == "A1L3"){
+            chooseJetpack();
+        }
+        else if (scenecurr.name == "A2L1" || scenecurr.name == "A2L2" || scenecurr.name == "A2L3"){
+            chooseGravityBoots();
+        }
+        /*else if (scenecurr.name == "A3L1" || scenecurr.name == "A3L2" || scenecurr.name == "A3L3"){
+            chooseGrapplingHook();
+        }*/
+        
     }
 
     void Update() {
-
+        
+        
+        
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            currentUpgradeState = UpgradeState.Jetpack;
+            chooseJetpack();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            currentUpgradeState = UpgradeState.GrapplingHook;
+            chooseGrapplingHook();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            currentUpgradeState = UpgradeState.GravityBoots;
+            chooseGravityBoots();
         }
 
         if (hitdead)
@@ -311,5 +327,20 @@ public class PlayerController : MonoBehaviour {
         if (energy >= 80) {
             minEnergy = true;
         }
+    }
+    
+    public UpgradeState chooseJetpack() {
+        currentUpgradeState = UpgradeState.Jetpack;
+        return currentUpgradeState;
+    }
+    
+    public UpgradeState chooseGravityBoots() {
+        currentUpgradeState = UpgradeState.GravityBoots;
+        return currentUpgradeState;
+    }
+    
+    public UpgradeState chooseGrapplingHook() {
+        currentUpgradeState = UpgradeState.GrapplingHook;
+        return currentUpgradeState;
     }
 }

@@ -89,7 +89,9 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         
-        
+        if (crystalCount>=8) {
+                trueMinEnergy();
+            }
         
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             chooseJetpack();
@@ -284,10 +286,7 @@ public class PlayerController : MonoBehaviour {
         if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Crystal")) ||
             mybodycollider.IsTouchingLayers(LayerMask.GetMask("Crystal"))) {
             Debug.Log("Touched gem");
-            SetEnergy(energy + crystalEnergyBoost);
-            if (energy >= 80) {
-                minEnergy = true;
-            }
+            
         }
     }
 

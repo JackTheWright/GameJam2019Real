@@ -27,11 +27,11 @@ EditorBuildSettings:
     path: Assets/Scenes/TRA2.unity
     guid: eb03a382362bc45308cd02aa83c79223
   - enabled: 1
-    path: Assets/Scenes/A2L1.unity
-    guid: 3f75694781614467281f4128b1dadf34
-  - enabled: 1
     path: Assets/Scenes/A2L2.unity
     guid: 77cebad0891ac4ebe817193fb549a72a
+  - enabled: 1
+    path: Assets/Scenes/A2L1.unity
+    guid: 3f75694781614467281f4128b1dadf34
   - enabled: 1
     path: Assets/Scenes/A2L3.unity
     guid: d0387ee8bdfde41439c2954ab180ad02
@@ -39,6 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TRA3.unity
     guid: 20a4087779a0f4d9aa6d1dbd7e6c7c55
   - enabled: 1
-    path: Assets/Scenes/A3L1.unity
+    path: Assets/Scenes/A3L2.unity
     guid: ccee674884fc9472da8973fd1e5b67e1
   m_configObjects: {}

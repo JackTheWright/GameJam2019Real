@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     CapsuleCollider2D mybodycollider;
     BoxCollider2D myfeetcollider;
     private Rigidbody2D rb2d;
+    Animator myanimator;
 
+    //Death Vars
+    public bool hitdead = false;
+    [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
     UpgradeState currentUpgradeState = UpgradeState.GravityBoots;
     [SerializeField] float jumpSpeed = 12f;
+
 
 
     // Jetpack Variables
@@ -30,74 +34,69 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 7f;
 
-    void Start()
-    {
+    void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         mybodycollider = GetComponent<CapsuleCollider2D>();
         myfeetcollider = GetComponent<BoxCollider2D>();
+        hitdead = false;
+        myanimator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-        if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            //myanimator.SetBool("jump", false);
-            //myanimator.SetBool("Fall", false);
-            //if (Input.GetKey(KeyCode.Mouse0))
-            //{
-            //    xpos = myrigidbody.position.x;
-            //    print("getting stuck in here?");
-            //    HitIt();
-            //    lastattacktime = Time.time;
-            //    animated = true;
+    void Update() {
+        if (hitdead) { return; }
+        else {
+            if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+                //myanimator.SetBool("jump", false);
+                //myanimator.SetBool("Fall", false);
+                //if (Input.GetKey(KeyCode.Mouse0))
+                //{
+                //    xpos = myrigidbody.position.x;
+                //    print("getting stuck in here?");
+                //    HitIt();
+                //    lastattacktime = Time.time;
+                //    animated = true;
 
-            //}
-            Jump();
+                //}
+                Jump();
+            }
+            else if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && (rb2d.velocity.y < -1)) {
+                //myanimator.SetBool("Fall", true);
+            }
+            Run();
+            //FlipSprite();
+            UseUpgrade();
+            Debug.Log(rb2d.velocity);
+            die();
         }
-        else if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && (rb2d.velocity.y < -1))
-        {
-            //myanimator.SetBool("Fall", true);
-        }
-        Run();
-        //FlipSprite();
-        UseUpgrade();
     }
 
-    void Run()
-    {
-        if (!isGrappling)
-        {
+    void Run() {
+        if (!isGrappling) {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
-            if (Input.GetKey("a"))
-            {
+            if (Input.GetKey("a")) {
                 rb2d.velocity += new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-1, transform.localScale.y);
             }
-            if (Input.GetKey("d"))
-            {
+            if (Input.GetKey("d")) {
                 rb2d.velocity += new Vector2(speed, 0);
                 transform.localScale = new Vector2(1, transform.localScale.y);
             }
         }
     }
 
-    private void FlipSprite()
-    {
+    private void FlipSprite() {
 
         bool playerHorizonVelocity = Mathf.Abs(rb2d.velocity.x) > Mathf.Epsilon;
 
-        if (playerHorizonVelocity)
-        {
+        if (playerHorizonVelocity) {
             transform.localScale = new Vector2((float)(Mathf.Sign(rb2d.velocity.x) * 1f), 1f);
         }
     }
 
-    private void Jump()
-    {
+    private void Jump() {
         if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        {
+        if (CrossPlatformInputManager.GetButtonDown("Jump")) {
             //attackflag = 0;
             //myanimator.SetBool("jump", true);
             Vector2 jumpUp = new Vector2(0f, jumpSpeed);
@@ -106,10 +105,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // Use the current upgrade selected, based on currentUpgradeState
-    private void UseUpgrade()
-    {
-        switch (currentUpgradeState)
-        {
+    private void UseUpgrade() {
+        switch (currentUpgradeState) {
             case UpgradeState.None:
                 break;
             case UpgradeState.Jetpack:
@@ -126,45 +123,37 @@ public class PlayerController : MonoBehaviour
 
     // Allow player to utilize jetpack
     // Handle resources of jetpack as the player uses it
-    private void UseJetpack()
-    {
+    private void UseJetpack() {
 
         // Case 1: Player is using jetpack
         if (Input.GetKey(KeyCode.LeftShift) &&
                 ((remainingJetpackTime > 0 && !IsGrounded()) ||
-                (remainingJetpackTime > 1 && IsGrounded())))
-        {
+                (remainingJetpackTime > 1 && IsGrounded()))) {
 
             // Use jetpack
             Vector2 jetpackUp = new Vector2(0f, jetPackVelocity);
             rb2d.velocity += jetpackUp;
-            if (rb2d.velocity.y > maxUpwardsVelocity)
-            {
+            if (rb2d.velocity.y > maxUpwardsVelocity) {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, maxUpwardsVelocity);
             }
 
             // Decrement resources
             remainingJetpackTime -= Time.deltaTime;
             remainingJetpackTime = Mathf.Clamp(remainingJetpackTime, 0, maxJetpackTime);
-            Debug.Log(remainingJetpackTime);
         }
 
         // Case 2: Player is grounded and not using jetpack
-        else if (IsGrounded())
-        {
+        else if (IsGrounded()) {
             remainingJetpackTime += 2.5f * Time.deltaTime;
             remainingJetpackTime = Mathf.Clamp(remainingJetpackTime, 0, maxJetpackTime);
-            Debug.Log(remainingJetpackTime);
         }
     }
 
     // Allow player to utilize grappling hook
-    private void UseGrapplingHook()
-    {
+    private void UseGrapplingHook() {
 
         // Initiate grapple
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
             // Compute direction to send grappling hook
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 direction = Vector3.Normalize(mousePos - (Vector2)rb2d.position);
@@ -172,8 +161,7 @@ public class PlayerController : MonoBehaviour
 
             // Shoot out grappling hook
             RaycastHit2D hit = Physics2D.Raycast(rb2d.position, direction, grappleDistance, layerMask);
-            if (hit.point != new Vector2(0, 0))
-            { // Point found!
+            if (hit.point != new Vector2(0, 0)) { // Point found!
                 grapplePoint = hit.point;
                 grappleDirection = direction;
 
@@ -187,22 +175,18 @@ public class PlayerController : MonoBehaviour
         }
 
         // Go towards grapple point
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            if (isGrappling && !isColliding())
-            {
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            if (isGrappling && !isColliding()) {
                 rb2d.velocity = grappleDirection * grappleSpeed * Time.deltaTime;
                 Debug.DrawRay(rb2d.position, grappleDirection * grappleDistance, Color.yellow);
             }
 
-            if (isGrappling && isColliding())
-            {
+            if (isGrappling && isColliding()) {
                 rb2d.velocity = new Vector2(0, 0);
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
             isGrappling = false;
             rb2d.gravityScale = 5;
         }
@@ -215,14 +199,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool IsGrounded()
-    {
+    bool IsGrounded() {
         return myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
-    bool isColliding()
-    {
+    bool isColliding() {
         return myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) ||
         mybodycollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+    }
+
+    private void die() {
+
+        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
+            myanimator.SetTrigger("Hurt");
+            rb2d.velocity = deathKick;
+            hitdead = true;
+        }
+
     }
 }

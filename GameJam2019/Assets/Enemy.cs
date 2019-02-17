@@ -22,16 +22,13 @@ public class Enemy : MonoBehaviour
     {
         if (countToDespawn == 3)
         {
-            print("going here...");
             GameObject.Find(gameObject.name + ("spawn point")).GetComponent<EnemyRespawn>().Despawn = true;
             Destroy(gameObject);
 
         }
-        print(IsFacingRight());
         if (IsFacingRight())
         {
             myRigidBody.velocity = new Vector2(-moveSpeed, 0f);
-            print(countToDespawn);
         }
         else
         {
@@ -48,7 +45,6 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        print("exiting");
         countToDespawn++;
 
         transform.localScale = new Vector2((Mathf.Sign(myRigidBody.velocity.x)), 1f);

@@ -24,13 +24,11 @@ public class EnemyRespawn : MonoBehaviour
     {
         if (Despawn == true)
         {
-            print("Timer");
             Timer += Time.deltaTime;
         }
 
         if (Timer >= Cooldown)
         {
-            print("timer > cooldown");
             //It will create a new Enemy of the same class, at this position.
             Enemy.transform.position = transform.position;
 

@@ -3,33 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     CapsuleCollider2D mybodycollider;
     BoxCollider2D myfeetcollider;
     private Rigidbody2D rb2d;
 
 
-    enum UpgradeState { None, Jetpack, MagnetTreads };
-    UpgradeState currentUpgradeState = UpgradeState.Jetpack;
+    enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
+    UpgradeState currentUpgradeState = UpgradeState.GrapplingHook;
     [SerializeField] float jumpSpeed = 12f;
 
 
     // Jetpack Variables
-    private const float jetPackVelocity = 2f;
-    private const float maxUpwardsVelocity = 23f;
+    private const float jetPackVelocity = 1.5f;
+    private const float maxUpwardsVelocity = 20f;
     private const float maxJetpackTime = 2.0f;
     private float remainingJetpackTime = maxJetpackTime;
 
+    // Grappling Hook Variables
+    private const float grappleDistance = 6f;
+    private const float grappleSpeed = 1000f;
+    private Vector2 grapplePoint;
+    private Vector2 grappleDirection;
+    private bool isGrappling;
+
     public float speed = 7f;
 
-    void Start() {
+    void Start()
+    {
         rb2d = GetComponent<Rigidbody2D>();
         mybodycollider = GetComponent<CapsuleCollider2D>();
         myfeetcollider = GetComponent<BoxCollider2D>();
     }
 
-    void Update() {
-        if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+    void Update()
+    {
+        if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
             //myanimator.SetBool("jump", false);
             //myanimator.SetBool("Fall", false);
             //if (Input.GetKey(KeyCode.Mouse0))
@@ -43,7 +54,8 @@ public class PlayerController : MonoBehaviour {
             //}
             Jump();
         }
-        else if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && (rb2d.velocity.y < -1)) {
+        else if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && (rb2d.velocity.y < -1))
+        {
             //myanimator.SetBool("Fall", true);
         }
         Run();
@@ -51,30 +63,41 @@ public class PlayerController : MonoBehaviour {
         UseUpgrade();
     }
 
-    void Run() {
-        if (Input.GetKey("a")) {
-            rb2d.position = rb2d.position + (Vector2.left * speed * Time.deltaTime);
-            transform.localScale = new Vector2(-1, 1);
-        }
-        if (Input.GetKey("d")) {
-            rb2d.position = rb2d.position + (Vector2.right * speed * Time.deltaTime);
-            transform.localScale = new Vector2(1, 1);
+    void Run()
+    {
+        if (!isGrappling)
+        {
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            if (Input.GetKey("a"))
+            {
+                rb2d.velocity += new Vector2(-speed, 0);
+                transform.localScale = new Vector2(-1, 1);
+            }
+            if (Input.GetKey("d"))
+            {
+                rb2d.velocity += new Vector2(speed, 0);
+                transform.localScale = new Vector2(1, 1);
+            }
         }
     }
 
-    private void FlipSprite() {
+    private void FlipSprite()
+    {
 
         bool playerHorizonVelocity = Mathf.Abs(rb2d.velocity.x) > Mathf.Epsilon;
 
-        if (playerHorizonVelocity) {
+        if (playerHorizonVelocity)
+        {
             transform.localScale = new Vector2((float)(Mathf.Sign(rb2d.velocity.x) * 1f), 1f);
         }
     }
 
-    private void Jump() {
+    private void Jump()
+    {
         if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("Jump")) {
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        {
             //attackflag = 0;
             //myanimator.SetBool("jump", true);
             Vector2 jumpUp = new Vector2(0f, jumpSpeed);
@@ -83,29 +106,40 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Use the current upgrade selected, based on currentUpgradeState
-    private void UseUpgrade() {
-        switch (currentUpgradeState) {
+    private void UseUpgrade()
+    {
+        switch (currentUpgradeState)
+        {
             case UpgradeState.None:
                 break;
             case UpgradeState.Jetpack:
                 UseJetpack();
+                break;
+            case UpgradeState.GrapplingHook:
+                UseGrapplingHook();
+                break;
+            case UpgradeState.GravityBoots:
+                UseGravityBoots();
                 break;
         }
     }
 
     // Allow player to utilize jetpack
     // Handle resources of jetpack as the player uses it
-    private void UseJetpack() {
+    private void UseJetpack()
+    {
 
         // Case 1: Player is using jetpack
         if (Input.GetKey(KeyCode.LeftShift) &&
                 ((remainingJetpackTime > 0 && !IsGrounded()) ||
-                (remainingJetpackTime > 1 && IsGrounded()))) {
+                (remainingJetpackTime > 1 && IsGrounded())))
+        {
 
             // Use jetpack
             Vector2 jetpackUp = new Vector2(0f, jetPackVelocity);
             rb2d.velocity += jetpackUp;
-            if (rb2d.velocity.y > maxUpwardsVelocity) {
+            if (rb2d.velocity.y > maxUpwardsVelocity)
+            {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, maxUpwardsVelocity);
             }
 
@@ -116,14 +150,77 @@ public class PlayerController : MonoBehaviour {
         }
 
         // Case 2: Player is grounded and not using jetpack
-        else if (IsGrounded()) {
+        else if (IsGrounded())
+        {
             remainingJetpackTime += 2.5f * Time.deltaTime;
             remainingJetpackTime = Mathf.Clamp(remainingJetpackTime, 0, maxJetpackTime);
             Debug.Log(remainingJetpackTime);
         }
     }
 
-    bool IsGrounded() {
+    // Allow player to utilize grappling hook
+    private void UseGrapplingHook()
+    {
+
+        // Initiate grapple
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            // Compute direction to send grappling hook
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = Vector3.Normalize(mousePos - (Vector2)rb2d.position);
+            int layerMask = 1 << 8; // Bit sequence 1000 0000 -- Only "Ground" layer
+
+            // Shoot out grappling hook
+            RaycastHit2D hit = Physics2D.Raycast(rb2d.position, direction, grappleDistance, layerMask);
+            if (hit.point != new Vector2(0, 0))
+            { // Point found!
+                grapplePoint = hit.point;
+                grappleDirection = direction;
+
+                // When grappling, all gravity removed
+                isGrappling = true;
+                rb2d.gravityScale = 0;
+
+                rb2d.position += grappleDirection * grappleSpeed / 1000 * Time.deltaTime;
+                Debug.DrawRay(rb2d.position, grappleDirection * grappleDistance, Color.yellow);
+            }
+        }
+
+        // Go towards grapple point
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (isGrappling && !isColliding())
+            {
+                rb2d.velocity = grappleDirection * grappleSpeed * Time.deltaTime;
+                Debug.DrawRay(rb2d.position, grappleDirection * grappleDistance, Color.yellow);
+            }
+
+            if (isGrappling && isColliding())
+            {
+                rb2d.velocity = new Vector2(0, 0);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isGrappling = false;
+            rb2d.gravityScale = 5;
+        }
+    }
+
+    private void UseGravityBoots()
+    {
+
+    }
+
+    bool IsGrounded()
+    {
         return myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
+    }
+
+    bool isColliding()
+    {
+        return myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) ||
+        mybodycollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 }

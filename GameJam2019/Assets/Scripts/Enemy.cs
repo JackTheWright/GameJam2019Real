@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countToDespawn == 3)
+        if (countToDespawn >= 3)
         {
             GameObject.Find(gameObject.name + ("spawn point")).GetComponent<EnemyRespawn>().Despawn = true;
             Destroy(gameObject);

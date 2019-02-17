@@ -19,10 +19,9 @@ public class LevelDoorAction : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (check == true) {//CheckUnlocked() == True) {
+        if (check == true) {
             if (PlayerProximityCollider.IsTouchingLayers(LayerMask.GetMask("Player")) == true) {
                 canv.transform.GetChild(0).gameObject.SetActive(true);
-                print("yeet");
                 //BlockPlayer.Enabled = False;
                 //Door open animation
                 //Disable Player Controls
@@ -36,7 +35,7 @@ public class LevelDoorAction : MonoBehaviour {
     }
     
     /*bool CheckUnlocked() {
-        if (player.GetKey == True && player.AtMinEnergy == True) {
+        if (player.hasKey == true && player.minEnergy == true) {
             return True;
         }
         return False;

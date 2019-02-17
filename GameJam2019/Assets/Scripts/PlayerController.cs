@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour {
     public bool hasKey;
     public int crystalCount;
     public bool minEnergy;
+    
+    //Exit Trigger
+    GameObject exitTrigger;
+    BoxCollider2D bc2d;
 
     //Death Vars
     public bool hitdead = false;
@@ -55,6 +59,8 @@ public class PlayerController : MonoBehaviour {
         myfeetcollider = GetComponent<BoxCollider2D>();
         hitdead = false;
         myanimator = GetComponent<Animator>();
+        exitTrigger = GameObject.Find("ExitTrigger");
+        bc2d = exitTrigger.GetComponent<BoxCollider2D>();
 
         SetEnergy(0);
     }
@@ -69,7 +75,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
         
-            else {
+        else {
             if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
                 //myanimator.SetBool("jump", false);
                 //myanimator.SetBool("Fall", false);
@@ -92,6 +98,7 @@ public class PlayerController : MonoBehaviour {
             UseUpgrade();
             die();
         }
+        nextLevel();
 
         GatherGems();
     }
@@ -257,6 +264,14 @@ public class PlayerController : MonoBehaviour {
             hitdead = true;
         }
 
+    }
+    
+    private void nextLevel() {
+        
+        
+        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("ExitTrigger"))) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void SetEnergy(float e) {

@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour {
             Run();
             //FlipSprite();
             UseUpgrade();
-            Debug.Log(rb2d.velocity);
             die();
         }
     }
@@ -170,7 +169,6 @@ public class PlayerController : MonoBehaviour {
                 rb2d.gravityScale = 0;
 
                 rb2d.position += grappleDirection * grappleSpeed / 1000 * Time.deltaTime;
-                Debug.DrawRay(rb2d.position, grappleDirection * grappleDistance, Color.yellow);
             }
         }
 
@@ -178,7 +176,6 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftShift)) {
             if (isGrappling && !isColliding()) {
                 rb2d.velocity = grappleDirection * grappleSpeed * Time.deltaTime;
-                Debug.DrawRay(rb2d.position, grappleDirection * grappleDistance, Color.yellow);
             }
 
             if (isGrappling && isColliding()) {

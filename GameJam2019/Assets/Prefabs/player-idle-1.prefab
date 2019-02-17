@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9218929425647295744}
   - component: {fileID: 6388453765466259044}
   - component: {fileID: 6100899543144143367}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: player-idle-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -584127431
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -167,6 +167,7 @@ MonoBehaviour:
   jumpSpeed: 18
   energySlider: {fileID: 1587511432476062531, guid: 1679ee5da272c4e5cbba5cb0613185ba,
     type: 3}
+  energy: 0
   fuelSlider: {fileID: 7964463408313441406, guid: 8b7070c30b67b44ca8a71e2793012520,
     type: 3}
   speed: 10

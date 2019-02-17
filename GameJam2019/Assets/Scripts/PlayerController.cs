@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviour {
     // Energy consomption variables
     public Slider energySlider;
 
-    private float energy;
+    public float energy;
     private const float maxEnergy = 100;
-    private const float movementEnergyFactor = 5;
-    private const float jumpEnergyFactor = 5;
+    private const float movementEnergyFactor = 8;
+    private const float jumpEnergyFactor = 10;
+    public const float crystalEnergyBoost = 25;
 
 
     // Jetpack Variables
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour {
             die();
         }
 
-        
+        GatherGems();
     }
 
     void Run() {
@@ -228,6 +229,14 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void GatherGems() {
+        if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Crystal")) ||
+            mybodycollider.IsTouchingLayers(LayerMask.GetMask("Crystal"))) {
+            Debug.Log("Touched gem");
+            SetEnergy(energy + crystalEnergyBoost);
+        }
+    }
+
     bool IsGrounded() {
         return myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
@@ -247,7 +256,7 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    private void SetEnergy(float e) {
+    public void SetEnergy(float e) {
         energy = e;
         energy = Mathf.Clamp(energy, 0, maxEnergy);
         energySlider.value = energy;

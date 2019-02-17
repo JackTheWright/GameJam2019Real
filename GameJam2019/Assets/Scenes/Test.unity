@@ -474,6 +474,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &687171506 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
+    type: 3}
+  m_PrefabInstance: {fileID: 363479787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1060738256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,7 +3612,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 687171506}
     - target: {fileID: 4399691960519789903, guid: 6671272f7655a4bff881b2f8a0f7c5d2,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -28,6 +28,11 @@ public class Crystal1 : MonoBehaviour
         //{
         //    print("object wasnt destroyed");
         //}
+
+        if (playerCollider.gameObject.layer == 10) { // Collided with playte
+            PlayerController PC = playerCollider.gameObject.GetComponent<PlayerController>();
+            PC.SetEnergy(PC.energy + PlayerController.crystalEnergyBoost);
+        }
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7654816170686151286}
   - component: {fileID: 3684365257362623742}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HookShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

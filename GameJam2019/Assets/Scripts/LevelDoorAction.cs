@@ -10,6 +10,8 @@ public class LevelDoorAction : MonoBehaviour {
     GameObject canvInteract;
     GameObject canvNeedKey;
     SpriteRenderer rend;
+    Animator dooranim;
+
     // Start is called before the first frame update
     void Start() {
         PlayerProximityCollider = GetComponent<CapsuleCollider2D>();
@@ -19,6 +21,7 @@ public class LevelDoorAction : MonoBehaviour {
         canvInteract = GameObject.FindGameObjectWithTag("interactUI");
         canvNeedKey = GameObject.FindGameObjectWithTag("needtoUnlock");
         rend = GetComponent<SpriteRenderer>();
+        dooranim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class LevelDoorAction : MonoBehaviour {
                 canvInteract.transform.GetChild(0).gameObject.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space)) {
                     BlockPlayer.enabled = false;
-                    rend.enabled = false; // door open animation
+                    dooranim.SetBool("DoorUp", true); // door open animation
                     canvInteract.transform.GetChild(0).gameObject.SetActive(false);
                     Destroy(gameObject);
                 }

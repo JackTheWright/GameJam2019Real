@@ -15,8 +15,7 @@ public class Crystal1 : MonoBehaviour
     void OnTriggerEnter2D(Collider2D playerCollider)
     {
         print("player entered collider");
-        //if (playerCollider.tag == "Gem")
-        //{
+
         // destroys crystal
         Destroy(gameObject);
         // increments count for number of crystals consumes 

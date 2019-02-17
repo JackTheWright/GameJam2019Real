@@ -11,6 +11,7 @@ public class LevelDoorAction : MonoBehaviour {
     GameObject canvNeedKey;
     SpriteRenderer rend;
     Animator dooranim;
+    public float Timer;
 
     // Start is called before the first frame update
     void Start() {
@@ -33,7 +34,11 @@ public class LevelDoorAction : MonoBehaviour {
                     BlockPlayer.enabled = false;
                     dooranim.SetBool("DoorUp", true); // door open animation
                     canvInteract.transform.GetChild(0).gameObject.SetActive(false);
-                    Destroy(gameObject);
+                    Timer += Time.deltaTime;
+                    if (Timer >= 1.5f)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
             }
             else if (!PlayerProximityCollider.IsTouchingLayers(LayerMask.GetMask("Player"))) {

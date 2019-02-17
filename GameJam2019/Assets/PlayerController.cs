@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     CapsuleCollider2D mybodycollider;
@@ -43,8 +44,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (hitdead) { return; }
-        else {
+
+        if (hitdead)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+        
+            else {
             if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
                 //myanimator.SetBool("jump", false);
                 //myanimator.SetBool("Fall", false);

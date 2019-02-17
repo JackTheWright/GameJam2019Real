@@ -165,6 +165,8 @@ MonoBehaviour:
   hitdead: 0
   deathKick: {x: 25, y: 25}
   jumpSpeed: 18
+  energySlider: {fileID: 1587511432476062531, guid: 1679ee5da272c4e5cbba5cb0613185ba,
+    type: 3}
   fuelSlider: {fileID: 7964463408313441406, guid: 8b7070c30b67b44ca8a71e2793012520,
     type: 3}
   speed: 10

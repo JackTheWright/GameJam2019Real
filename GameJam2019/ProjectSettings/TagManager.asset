@@ -19,9 +19,9 @@ TagManager:
   - 
   - Ground
   - MidgroundBack
-  - Player
   - Background
   - MidgroundFront
+  - Player
   - Enemy
   - 
   - 

@@ -21,7 +21,7 @@ public class WallEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (countToDespawn == 3)
+        if (countToDespawn >= 3)
         {
             GameObject.Find(gameObject.name + ("wall spawn point")).GetComponent<EnemyRespawnWall>().Despawn = true;
             Destroy(gameObject);

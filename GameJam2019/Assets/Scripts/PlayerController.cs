@@ -22,10 +22,18 @@ public class PlayerController : MonoBehaviour {
     UpgradeState currentUpgradeState = UpgradeState.Jetpack;
     [SerializeField] float jumpSpeed = 12f;
 
+    // Energy consomption variables
+    public Slider energySlider;
+
+    private float energy;
+    private const float maxEnergy = 100;
+    private const float movementEnergyFactor = 5;
+    private const float jumpEnergyFactor = 5;
 
 
     // Jetpack Variables
     public Slider fuelSlider;
+
     private const float jetPackVelocity = 1.5f;
     private const float maxUpwardsVelocity = 20f;
     private const float maxJetpackTime = 2.0f;
@@ -46,6 +54,8 @@ public class PlayerController : MonoBehaviour {
         myfeetcollider = GetComponent<BoxCollider2D>();
         hitdead = false;
         myanimator = GetComponent<Animator>();
+
+        SetEnergy(maxEnergy);
     }
 
     void Update() {
@@ -81,6 +91,8 @@ public class PlayerController : MonoBehaviour {
             UseUpgrade();
             die();
         }
+
+        
     }
 
     void Run() {
@@ -89,10 +101,12 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey("a")) {
                 rb2d.velocity += new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-1, transform.localScale.y);
+                SetEnergy(energy - movementEnergyFactor*Time.deltaTime);
             }
             if (Input.GetKey("d")) {
                 rb2d.velocity += new Vector2(speed, 0);
                 transform.localScale = new Vector2(1, transform.localScale.y);
+                SetEnergy(energy - movementEnergyFactor*Time.deltaTime);
             }
         }
     }
@@ -107,13 +121,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Jump() {
-        if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
         if (Input.GetKeyDown("w")) {
-            //attackflag = 0;
-            //myanimator.SetBool("jump", true);
-            Vector2 jumpUp = new Vector2(0f, jumpSpeed);
-            rb2d.velocity += jumpUp * Mathf.Sign(rb2d.gravityScale);
+            if (IsGrounded()) {
+                //attackflag = 0;
+                //myanimator.SetBool("jump", true);
+                Vector2 jumpUp = new Vector2(0f, jumpSpeed);
+                rb2d.velocity += jumpUp * Mathf.Sign(rb2d.gravityScale);
+                SetEnergy(energy - jumpEnergyFactor);
+            }
         }
     }
 
@@ -229,5 +245,11 @@ public class PlayerController : MonoBehaviour {
             hitdead = true;
         }
 
+    }
+
+    private void SetEnergy(float e) {
+        energy = e;
+        energy = Mathf.Clamp(energy, 0, maxEnergy);
+        energySlider.value = energy;
     }
 }

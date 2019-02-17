@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2104989176979338088}
   - component: {fileID: 2104989176979338091}
   - component: {fileID: 2104989176979338090}
+  - component: {fileID: 1412816606644566280}
   m_Layer: 13
   m_Name: EnemyFloor
   m_TagString: EnemyFloor
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104989176979338085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42, y: 6.94, z: -0.53787225}
+  m_LocalPosition: {x: 0.46, y: 6.97, z: -0.53787225}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,9 +94,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2c5f3b2250c31495db3ffcf7e90bb619, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9ff93ea5ade24e1eaa666835d7616fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.36, y: 0.28}
@@ -117,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.17517987, y: -0.24959731}
+  m_Offset: {x: 0.033977747, y: -0.66044235}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.25, y: 1.75}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 0.36, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7955225, y: 1.2566972}
+  m_Size: {x: 1.7955225, y: 0.58440495}
   m_EdgeRadius: 0
 --- !u!70 &2104989176979338091
 CapsuleCollider2D:
@@ -143,8 +144,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.1199911, y: -0.94592524}
-  m_Size: {x: 0.33532292, y: 1.084857}
+  m_Offset: {x: -0.94071317, y: -0.94592524}
+  m_Size: {x: 0.15604496, y: 1.084857}
   m_Direction: 0
 --- !u!114 &2104989176979338090
 MonoBehaviour:
@@ -163,3 +164,22 @@ MonoBehaviour:
   dmg: 1
   countToDespawn: 0
   position: {x: 0, y: 0, z: 0}
+--- !u!95 &1412816606644566280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104989176979338085}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24a89e05d5dea431f89828f271ee7533, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

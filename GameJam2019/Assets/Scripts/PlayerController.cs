@@ -178,7 +178,7 @@ public class PlayerController : MonoBehaviour {
         // Case 1: Player is using jetpack
         if (Input.GetKey(KeyCode.LeftShift) &&
                 ((remainingJetpackTime > 0 && !IsGrounded()) ||
-                (remainingJetpackTime > 0.33 && IsGrounded()))) {
+                (remainingJetpackTime > 1 && IsGrounded()))) {
 
             // Use jetpack
             Vector2 jetpackUp = new Vector2(0f, jetPackVelocity);

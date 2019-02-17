@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    UpgradeState currentUpgradeState = UpgradeState.GravityBoots;
+    UpgradeState currentUpgradeState = UpgradeState.None;
     [SerializeField] float jumpSpeed = 12f;
 
     // Energy consomption variables
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
 
     // Grappling Hook Variables
     private const float grappleDistance = 6f;
-    private const float grappleSpeed = 1000f;
+    private const float grappleSpeed = 1800f;
     private Vector2 grapplePoint;
     private Vector2 grappleDirection;
     private bool isGrappling;
@@ -66,6 +66,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            currentUpgradeState = UpgradeState.Jetpack;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            currentUpgradeState = UpgradeState.GrapplingHook;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            currentUpgradeState = UpgradeState.GravityBoots;
+        }
 
         if (hitdead)
         {

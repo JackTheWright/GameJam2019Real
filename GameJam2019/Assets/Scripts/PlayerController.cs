@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour {
     private float remainingJetpackTime = maxJetpackTime;
 
     // Grappling Hook Variables
+    public GameObject hookShot;
+
+    private GameObject hookShotInstance;
     private const float grappleDistance = 6f;
     private const float grappleSpeed = 1800f;
     private Vector2 grapplePoint;
@@ -224,6 +227,11 @@ public class PlayerController : MonoBehaviour {
                 rb2d.gravityScale = 0;
 
                 rb2d.position += grappleDirection * grappleSpeed / 1000 * Time.deltaTime;
+
+                // Spawn hookshot at point
+                Quaternion rotation = new Quaternion(direction.x, direction.y, 0, 0);
+                hookShotInstance = Instantiate(hookShot, grapplePoint, rotation) as GameObject;
+                hookShotInstance.transform.position = grapplePoint;
             }
         }
 
@@ -238,9 +246,11 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        // Exit grapple mode
         if (Input.GetKeyUp(KeyCode.LeftShift)) {
             isGrappling = false;
             rb2d.gravityScale = 5;
+            Destroy(hookShotInstance);
         }
     }
 

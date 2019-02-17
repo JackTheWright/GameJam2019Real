@@ -126129,6 +126129,7 @@ MonoBehaviour:
   energy: 0
   fuelSlider: {fileID: 7964463408313441406, guid: 8b7070c30b67b44ca8a71e2793012520,
     type: 3}
+  hookShot: {fileID: 0}
   speed: 10
 --- !u!1 &16285840507393560
 GameObject:
@@ -127167,7 +127168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5774734394337253243}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.95, y: 3.02, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8635228094900806324}

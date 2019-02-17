@@ -280,7 +280,7 @@ public class PlayerController : MonoBehaviour {
 
     private void die() {
 
-        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
+        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("Enemy")) || myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
             myanimator.SetTrigger("Hurt");
             rb2d.velocity = deathKick;
             hitdead = true;

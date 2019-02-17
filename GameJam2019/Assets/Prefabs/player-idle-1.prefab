@@ -170,6 +170,7 @@ MonoBehaviour:
   energy: 0
   fuelSlider: {fileID: 7964463408313441406, guid: 8b7070c30b67b44ca8a71e2793012520,
     type: 3}
+  hookShot: {fileID: 23713867231331874, guid: 52b1fcb4bc60f40e596aacb17e25f6e0, type: 3}
   speed: 10
 --- !u!95 &6100899543144143367
 Animator:

@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour {
     private void nextLevel() {
         
         
-        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("ExitTrigger"))) {
+        if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("Exit rigger"))) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

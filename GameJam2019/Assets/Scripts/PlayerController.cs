@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    UpgradeState currentUpgradeState = UpgradeState.Jetpack;
+    UpgradeState currentUpgradeState = UpgradeState.GravityBoots;
     [SerializeField] float jumpSpeed = 12f;
 
     // Energy consomption variables

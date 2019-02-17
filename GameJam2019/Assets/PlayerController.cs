@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     CapsuleCollider2D mybodycollider;
@@ -18,12 +19,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
 
     enum UpgradeState { None, Jetpack, GrapplingHook, GravityBoots };
-    UpgradeState currentUpgradeState = UpgradeState.GravityBoots;
+    UpgradeState currentUpgradeState = UpgradeState.Jetpack;
     [SerializeField] float jumpSpeed = 12f;
 
 
 
     // Jetpack Variables
+    public Slider fuelSlider;
     private const float jetPackVelocity = 1.5f;
     private const float maxUpwardsVelocity = 20f;
     private const float maxJetpackTime = 2.0f;
@@ -107,7 +109,7 @@ public class PlayerController : MonoBehaviour {
     private void Jump() {
         if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; }
 
-        if (CrossPlatformInputManager.GetButtonDown("w")) {
+        if (Input.GetKeyDown("w")) {
             //attackflag = 0;
             //myanimator.SetBool("jump", true);
             Vector2 jumpUp = new Vector2(0f, jumpSpeed);
@@ -151,12 +153,14 @@ public class PlayerController : MonoBehaviour {
             // Decrement resources
             remainingJetpackTime -= Time.deltaTime;
             remainingJetpackTime = Mathf.Clamp(remainingJetpackTime, 0, maxJetpackTime);
+            fuelSlider.value = remainingJetpackTime;
         }
 
         // Case 2: Player is grounded and not using jetpack
         else if (IsGrounded()) {
             remainingJetpackTime += 2.5f * Time.deltaTime;
             remainingJetpackTime = Mathf.Clamp(remainingJetpackTime, 0, maxJetpackTime);
+            fuelSlider.value = remainingJetpackTime;
         }
     }
 

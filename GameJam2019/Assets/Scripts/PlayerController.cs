@@ -313,6 +313,7 @@ public class PlayerController : MonoBehaviour {
         
         
         if (mybodycollider.IsTouchingLayers(LayerMask.GetMask("Exit rigger"))) {
+            print("wow");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

@@ -17,7 +17,7 @@ public class StartGame : MonoBehaviour
         
     }
     
-    void Start() {
+    void Blart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

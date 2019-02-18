@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelDoorAction : MonoBehaviour {
     CapsuleCollider2D PlayerProximityCollider;
@@ -37,7 +38,8 @@ public class LevelDoorAction : MonoBehaviour {
                     Timer += Time.deltaTime;
                     if (Timer >= 1.5f)
                     {
-                        Destroy(gameObject);
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                        print("yo");
                     }
                 }
             }

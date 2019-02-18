@@ -127,12 +127,12 @@ PrefabInstance:
     - target: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.69
+      value: -25.63
       objectReference: {fileID: 0}
     - target: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.74
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
         type: 3}
@@ -191,6 +191,12 @@ PrefabInstance:
       objectReference: {fileID: 1849647096}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06dd2d918c2ae41bf8a8d3a145986174, type: 3}
+--- !u!4 &18622142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
+    type: 3}
+  m_PrefabInstance: {fileID: 18622141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &73523505
 GameObject:
   m_ObjectHideFlags: 3
@@ -355,11 +361,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnergySlider
       objectReference: {fileID: 0}
-    - target: {fileID: 3871541602302253714, guid: 1679ee5da272c4e5cbba5cb0613185ba,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3866788991920850764, guid: 1679ee5da272c4e5cbba5cb0613185ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -464,6 +465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3871541602302253714, guid: 1679ee5da272c4e5cbba5cb0613185ba,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1679ee5da272c4e5cbba5cb0613185ba, type: 3}
@@ -802,11 +808,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SliderFuel
       objectReference: {fileID: 0}
-    - target: {fileID: 7964463408992002813, guid: 8b7070c30b67b44ca8a71e2793012520,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7964463408313441401, guid: 8b7070c30b67b44ca8a71e2793012520,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -911,6 +912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7964463408992002813, guid: 8b7070c30b67b44ca8a71e2793012520,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7070c30b67b44ca8a71e2793012520, type: 3}
@@ -10982,17 +10988,17 @@ PrefabInstance:
     - target: {fileID: 1664374201594041394, guid: 0d191370928c440879c15a54c889564e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0645
+      value: 1.8923615
       objectReference: {fileID: 0}
     - target: {fileID: 1664374201594041394, guid: 0d191370928c440879c15a54c889564e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.237007
+      value: 9.309827
       objectReference: {fileID: 0}
     - target: {fileID: 1664374201594041394, guid: 0d191370928c440879c15a54c889564e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0645
+      value: 1.8923615
       objectReference: {fileID: 0}
     - target: {fileID: 1664374201594041397, guid: 0d191370928c440879c15a54c889564e,
         type: 3}
@@ -14041,7 +14047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759103180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.080001, y: -2.31, z: -10}
+  m_LocalPosition: {x: -13.919999, y: -2.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 73523506}
@@ -14066,7 +14072,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 18622142}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -146030,7 +146036,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122457125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.080001, y: -2.31, z: -10}
+  m_LocalPosition: {x: -13.919999, y: -2.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 909673085}

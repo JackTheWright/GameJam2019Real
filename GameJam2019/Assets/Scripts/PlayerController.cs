@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
         
         else {
             if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-                myanimator.SetBool("jump", false);
+                myanimator.SetBool("Jump", false);
                 //myanimator.SetBool("Fall", false);
                 //if (Input.GetKey(KeyCode.Mouse0))
                 //{
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour {
                 Jump();
             }
             else if (!myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && (rb2d.velocity.y < -1)) {
-                //myanimator.SetBool("Fall", true);
+                myanimator.SetBool("Walk", false);
             }
             Run();
             //FlipSprite();
@@ -147,13 +147,16 @@ public class PlayerController : MonoBehaviour {
                 rb2d.velocity += new Vector2(-speed, 0);
                 transform.localScale = new Vector2(-2, transform.localScale.y);
                 //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
-                myanimator.SetTrigger("Walk");
+                myanimator.SetBool("Walk", true);
             }
-            if (Input.GetKey("d")) {
+            else if (Input.GetKey("d")) {
                 rb2d.velocity += new Vector2(speed, 0);
                 transform.localScale = new Vector2(2, transform.localScale.y);
                 //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
-                myanimator.SetTrigger("Walk");
+                myanimator.SetBool("Walk", true);
+            }
+            else {
+                myanimator.SetBool("Walk", false);
             }
         }
         
@@ -176,7 +179,8 @@ public class PlayerController : MonoBehaviour {
                 //myanimator.SetBool("jump", true);
                 Vector2 jumpUp = new Vector2(0f, jumpSpeed);
                 rb2d.velocity += jumpUp * Mathf.Sign(rb2d.gravityScale);
-                //SetEnergy(energy - jumpEnergyFactor);
+                //SetEnergy(energy - jumpEnergyFactor
+                myanimator.SetBool("Jump", true);
             }
         }
         

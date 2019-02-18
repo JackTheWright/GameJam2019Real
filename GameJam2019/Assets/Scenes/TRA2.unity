@@ -4639,7 +4639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222689869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.07, y: -0.98, z: -10}
+  m_LocalPosition: {x: -13.02, y: -0.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2145975456}
@@ -30169,7 +30169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953515406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.07, y: -0.98, z: -10}
+  m_LocalPosition: {x: -13.02, y: -0.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1592078240}
@@ -30194,7 +30194,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 2016068439}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -30271,6 +30271,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06dd2d918c2ae41bf8a8d3a145986174, type: 3}
+--- !u!4 &2016068439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5161645326245088973, guid: 06dd2d918c2ae41bf8a8d3a145986174,
+    type: 3}
+  m_PrefabInstance: {fileID: 2016068438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2101523812
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -88,7 +88,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         if (crystalCount>=8) {
                 trueMinEnergy();
             }

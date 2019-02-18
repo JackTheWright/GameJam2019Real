@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
         
         else {
             if (myfeetcollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-                //myanimator.SetBool("jump", false);
+                myanimator.SetBool("jump", false);
                 //myanimator.SetBool("Fall", false);
                 //if (Input.GetKey(KeyCode.Mouse0))
                 //{
@@ -145,13 +145,15 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
             if (Input.GetKey("a")) {
                 rb2d.velocity += new Vector2(-speed, 0);
-                transform.localScale = new Vector2(-1, transform.localScale.y);
+                transform.localScale = new Vector2(-2, transform.localScale.y);
                 //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
+                myanimator.SetTrigger("Walk");
             }
             if (Input.GetKey("d")) {
                 rb2d.velocity += new Vector2(speed, 0);
-                transform.localScale = new Vector2(1, transform.localScale.y);
+                transform.localScale = new Vector2(2, transform.localScale.y);
                 //SetEnergy(energy - movementEnergyFactor * Time.deltaTime);
+                myanimator.SetTrigger("Walk");
             }
         }
         
